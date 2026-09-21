@@ -62,7 +62,7 @@ export function ECard() {
   }, []);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset["theme"] = theme;
     window.localStorage.setItem("graficolor-theme", theme);
   }, [theme]);
 
