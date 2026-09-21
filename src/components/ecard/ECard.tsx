@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, Download, ExternalLink, Moon, Sun } from "lucide-react";
 import logoAsset from "@/assets/graficolor-logo.jpg.asset.json";
 import { actionIcons, ecardConfig, whatsappUrl } from "@/data/ecard-config";
@@ -26,13 +26,11 @@ function ActionTile({
   icon: Icon,
   href,
   onClick,
-  download,
 }: {
   label: string;
   icon: React.ComponentType<{ size?: number; strokeWidth?: number }>;
   href?: string;
   onClick?: () => void;
-  download?: boolean;
 }) {
   const content = (
     <>
@@ -43,7 +41,7 @@ function ActionTile({
 
   if (href) {
     return (
-      <a className="action-tile" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" download={download}>
+      <a className="action-tile" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
         {content}
       </a>
     );
@@ -66,7 +64,7 @@ export function ECard() {
     window.localStorage.setItem("graficolor-theme", theme);
   }, [theme]);
 
-  const contactHref = useMemo(() => {
+  function saveContact() {
     const vcard = [
       "BEGIN:VCARD",
       "VERSION:3.0",
@@ -79,10 +77,15 @@ export function ECard() {
       `URL:${ecardConfig.website}`,
       "END:VCARD",
     ].join("\r\n");
-    return URL.createObjectURL(new Blob([vcard], { type: "text/vcard;charset=utf-8" }));
-  }, []);
-
-  useEffect(() => () => URL.revokeObjectURL(contactHref), [contactHref]);
+    const contactUrl = URL.createObjectURL(new Blob([vcard], { type: "text/vcard;charset=utf-8" }));
+    const downloadLink = document.createElement("a");
+    downloadLink.href = contactUrl;
+    downloadLink.download = "Graficolor.vcf";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+    window.setTimeout(() => URL.revokeObjectURL(contactUrl), 100);
+  }
 
   async function shareCard() {
     const shareData = { title: `${ecardConfig.businessName} · ${ecardConfig.activity}`, text: ecardConfig.tagline, url: window.location.href };
@@ -144,7 +147,7 @@ export function ECard() {
             <div className="actions-grid">
               {actions.map((action) => <ActionTile key={action.label} {...action} />)}
               <ActionTile label={copied ? "Enlace copiado" : "Compartir"} icon={copied ? Check : actionIcons.share} onClick={shareCard} />
-              <ActionTile label="Guardar contacto" icon={Download} href={contactHref} download />
+              <ActionTile label="Guardar contacto" icon={Download} onClick={saveContact} />
             </div>
             <p className="share-feedback" aria-live="polite">{copied ? "Enlace copiado al portapapeles." : ""}</p>
           </section>
