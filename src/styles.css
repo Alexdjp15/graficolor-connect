@@ -105,7 +105,8 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-.dark {
+.dark,
+[data-theme="dark"] {
   --background: oklch(0.105 0.012 275);
   --foreground: oklch(0.95 0.008 250);
   --card: oklch(0.145 0.015 275);
