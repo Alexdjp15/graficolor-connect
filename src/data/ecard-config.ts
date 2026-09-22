@@ -59,7 +59,7 @@ export const ecardConfig: ECardConfig = {
   phone: "+57 300 837 4808",
   phoneHref: "+573008374808",
   whatsapp: whatsappNumber,
-  email: "gerencia@graficolorsm.com",
+  email: "comercial@graficolorsm.com",
   website: "https://www.graficolorsm.com",
   instagram: "https://www.instagram.com/graficolorsm",
   map: "https://www.google.com/maps/search/?api=1&query=Graficolor+SM+Santa+Marta+Magdalena+Colombia",
