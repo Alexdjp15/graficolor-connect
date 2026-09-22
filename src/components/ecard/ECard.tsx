@@ -205,9 +205,7 @@ export function ECard() {
         </div>
 
         <footer>
-          <img src={lightLogoAsset.url} alt="" aria-hidden="true" />
-          <div><strong>{ecardConfig.businessName}</strong><span>{ecardConfig.activity}</span></div>
-          <p>Santa Marta, Colombia</p>
+          <img src={lightLogoAsset.url} alt="Logo de Graficolor" />
         </footer>
       </article>
     </main>
