@@ -12,11 +12,11 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Graficolor · Litografía y Diseño" },
       { property: "og:description", content: "Imprimimos tus ideas. Contacta a Graficolor SM, conoce sus servicios y solicita una cotización." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://alexdjp15.github.io/graficolor-connect/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#111014" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://alexdjp15.github.io/graficolor-connect/" }],
   }),
   component: Index,
 });

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Check, ChevronDown, Download, ExternalLink, Moon, Sun } from "lucide-react";
-import darkLogoAsset from "@/assets/graficolor-logo-dark.png.asset.json";
-import lightLogoAsset from "@/assets/graficolor-logo-light.png.asset.json";
+import darkLogoAsset from "@/assets/graficolor-logo-dark.png";
+import lightLogoAsset from "@/assets/graficolor-logo-light.png";
 import { actionIcons, ecardConfig, whatsappUrl } from "@/data/ecard-config";
 
 type Theme = "light" | "dark";
@@ -129,7 +129,7 @@ export function ECard() {
             </IconButton>
           </div>
           <div className="brand-lockup">
-            <div className="logo-frame"><img src={lightLogoAsset.url} alt="Logo de Graficolor" /></div>
+            <div className="logo-frame"><img src={lightLogoAsset} alt="Logo de Graficolor" /></div>
             <p className="activity">{ecardConfig.activity}</p>
             <h1>{ecardConfig.businessName}</h1>
             <p className="tagline">{ecardConfig.tagline}</p>
@@ -189,7 +189,7 @@ export function ECard() {
           <section className="portfolio-band reveal" aria-labelledby="portafolio-title">
             <div><span className="eyebrow">Trabajo que habla por tu marca</span><h2 id="portafolio-title">Ideas que pasan<br />del concepto al papel.</h2></div>
             <a href={ecardConfig.portfolio} target="_blank" rel="noreferrer">Ver portafolio <ExternalLink size={17} /></a>
-            <img className="portfolio-logo" src={darkLogoAsset.url} alt="" aria-hidden="true" />
+            <img className="portfolio-logo" src={darkLogoAsset} alt="" aria-hidden="true" />
           </section>
 
           <section className="section contact-section reveal" aria-labelledby="contacto-title">
@@ -205,7 +205,7 @@ export function ECard() {
         </div>
 
         <footer>
-          <img src={lightLogoAsset.url} alt="Logo de Graficolor" />
+          <img src={lightLogoAsset} alt="Logo de Graficolor" />
         </footer>
       </article>
     </main>

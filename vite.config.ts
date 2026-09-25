@@ -11,5 +11,11 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Publicación estática en GitHub Pages bajo https://alexdjp15.github.io/graficolor-connect/
+    prerender: { enabled: true },
+    router: { basepath: "/graficolor-connect" },
+  },
+  vite: {
+    base: "/graficolor-connect/",
   },
 });
